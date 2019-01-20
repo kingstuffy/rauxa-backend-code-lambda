@@ -1,9 +1,8 @@
 const fileType = require('file-type');
 const sharp = require('sharp');
-const rp = require('request-promise');
 const uuid = require('uuidv4');
 
-const s3Service = require('./S3Service');
+const s3Service = require('./s3Service');
 const allowedImageTypes = [
     'image/gif',
     'image/jpeg',

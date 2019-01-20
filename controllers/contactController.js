@@ -9,8 +9,8 @@ module.exports = {
             const requiredFields = ['name', 'phone', 'image'];
             await contactService.validateMissingFields({ body, requiredFields });
 
-            const imgData = await imageService.upload(body);
 
+            imgData = await imageService.upload(body);
             const payload = {
                 ..._.omit(body, 'image'),
                 ...imgData,

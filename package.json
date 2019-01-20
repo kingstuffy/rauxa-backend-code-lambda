@@ -4,6 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
+    "dockerbuild": "rm -rf node_modules/sharp && docker run -v \"$PWD\":/var/task lambci/lambda:build-nodejs8.10 npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,8 +19,6 @@
     "file-type": "^10.7.0",
     "lodash": "^4.17.11",
     "mysql2": "^1.6.4",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2",
     "sequelize": "^4.42.0",
     "sharp": "^0.21.3",
     "uuidv4": "^2.0.0"
