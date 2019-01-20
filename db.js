@@ -1,13 +1,15 @@
-const Sequelize = require('sequelize')
-const ContactModel = require('./models/Contact')
+const Sequelize = require('sequelize');
+const ContactModel = require('./models/Contact');
+const config = require('./config').db;
+
 const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
+    config.name,
+    config.user,
+    config.password,
     {
         dialect: 'mysql',
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT
+        host: config.host,
+        port: config.port
     }
 );
 
