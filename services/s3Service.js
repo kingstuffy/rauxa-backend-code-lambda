@@ -9,15 +9,14 @@ const s3 = new S3({
 
 
 module.exports = {
-    putObject({ data, key, options = {} }) {
+    putObject({ body, key, options = {} }) {
         return new Promise((resolve, reject) => {
             const params = {
                 Bucket: s3Config.bucket,
                 Key: key,
-                Body: data,
+                Body: body,
                 ...options,
             };
-            console.log(params, s3Config);
 
             s3.putObject(params, function (err) {
                 if (err) {

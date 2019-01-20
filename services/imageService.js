@@ -18,7 +18,7 @@ module.exports = {
         const fileTypeInfo = fileType(fileBuffer);
 
         if (fileBuffer.length > 500000 || !allowedImageTypes.includes(fileTypeInfo.mime)) {
-            return {
+            throw {
                 statusCode: '402',
                 message: 'Not a valid file type or file too big.'
             };
@@ -30,24 +30,14 @@ module.exports = {
             ContentType: fileTypeInfo.mime
         };
 
-        try {
-            const imgUrl = await s3Service.putObject({
-                body: fileBuffer,
-                key: fileName,
-                options,
-            });
+        const imgUrl = await s3Service.putObject({
+            body: fileBuffer,
+            key: fileName,
+            options,
+        });
 
-            const thumbnailUrl = await self.generateThumbnail(fileBuffer);
-            return {
-                statusCode: 200,
-                data: {
-                    imgUrl,
-                    thumbnailUrl,
-                }
-            }
-        } catch (e) {
-            return e;
-        }
+        const thumbnailUrl = await self.generateThumbnail(fileBuffer);
+        return { imgUrl, thumbnailUrl, };
     },
 
     async generateThumbnail(fileBuffer) {
@@ -59,7 +49,7 @@ module.exports = {
         });
 
         const key = `${uuid()}.${info.format}`;
-        return s3Service.putObject({ data, key });
+        return s3Service.putObject({ body: data, key });
     },
 
 
