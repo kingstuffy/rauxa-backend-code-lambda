@@ -18,7 +18,10 @@
     "file-type": "^10.7.0",
     "lodash": "^4.17.11",
     "mysql2": "^1.6.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.42.0",
-    "sharp": "^0.21.3"
+    "sharp": "^0.21.3",
+    "uuidv4": "^2.0.0"
   }
 }

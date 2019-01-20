@@ -10,6 +10,9 @@ provider:
   stage: ${self:custom.secrets.NODE_ENV}
   environment:
     NODE_ENV: ${self:custom.secrets.NODE_ENV}
+    AWS_S3_KEY: ${self:custom.secrets.AWS_S3_KEY}
+    AWS_S3_SECRET: ${self:custom.secrets.AWS_S3_SECRET}
+    AWS_S3_BUCKET: ${self:custom.secrets.AWS_S3_BUCKET}
     DB_NAME: ${self:custom.secrets.DB_NAME}
     DB_USER: ${self:custom.secrets.DB_USER}
     DB_PASSWORD: ${self:custom.secrets.DB_PASSWORD}
