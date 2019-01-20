@@ -7,7 +7,8 @@ module.exports = (sequelize, type) => {
         },
         name: {
             type: type.STRING,
-            defaultValue: '',
+            allowNull: false,
+            len: [2,100],
             validate: {
                 notEmpty: {
                     msg: 'Name is required'
@@ -16,7 +17,8 @@ module.exports = (sequelize, type) => {
         },
         phone: {
             type: type.STRING,
-            defaultValue: '',
+            allowNull: false,
+            len: [2,20],
             validate: {
                 notEmpty: {
                     msg: 'Phone is required'
@@ -25,7 +27,7 @@ module.exports = (sequelize, type) => {
         },
         thumbnailUrl: {
             type: type.STRING,
-            defaultValue: '',
+            allowNull: false,
             validate: {
                 notEmpty: {
                     msg: 'Thumbnail URL is required'
@@ -34,7 +36,7 @@ module.exports = (sequelize, type) => {
         },
         imgUrl: {
             type: type.STRING,
-            defaultValue: '',
+            allowNull: false,
             validate: {
                 notEmpty: {
                     msg: 'Image URL is required'
