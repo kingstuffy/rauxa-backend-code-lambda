@@ -1,5 +1,6 @@
 # system/ide directories
 .idea
+.DS_Store
 
 # package directories
 node_modules
