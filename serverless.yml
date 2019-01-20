@@ -6,6 +6,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs8.10
+  region: us-west-2
   timeout: 30
   stage: ${self:custom.secrets.NODE_ENV}
   environment:
@@ -25,7 +26,6 @@ provider:
       - ${self:custom.secrets.SUBNET1_ID}
       - ${self:custom.secrets.SUBNET2_ID}
       - ${self:custom.secrets.SUBNET3_ID}
-      - ${self:custom.secrets.SUBNET4_ID}
 
 functions:
   healthCheck:

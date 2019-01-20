@@ -3,12 +3,6 @@
 const connectToDatabase = require('./db');
 const contactController = require('./controllers/contactController');
 
-function HTTPError(statusCode, message) {
-    const error = new Error(message);
-    error.statusCode = statusCode;
-    return error
-}
-
 module.exports.healthCheck = async () => {
     await connectToDatabase();
     console.log('Connection successful.');
