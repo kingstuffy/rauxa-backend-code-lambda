@@ -1,14 +1,35 @@
 'use strict';
 
-module.exports.hello = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+const connectToDatabase = require('./db');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+function HTTPError(statusCode, message) {
+    const error = new Error(message);
+    error.statusCode = statusCode;
+    return error
+};
+
+module.exports.healthCheck = async () => {
+    await connectToDatabase();
+    console.log('Connection successful.');
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ message: 'Connection successful.' })
+    }
+};
+
+module.exports.create = async (event) => {
+    try {
+        const { Contact } = await connectToDatabase();
+        const contact = await Contact.create(JSON.parse(event.body));
+        return {
+            statusCode: 200,
+            body: JSON.stringify(contact)
+        }
+    } catch (err) {
+        return {
+            statusCode: err.statusCode || 500,
+            headers: { 'Content-Type': 'text/plain' },
+            body: 'Could not create the contact.'
+        }
+    }
 };
