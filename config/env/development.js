@@ -10,6 +10,7 @@ const development = {
         key: process.env.AWS_S3_KEY,
         secret: process.env.AWS_S3_SECRET,
         bucket: process.env.AWS_S3_BUCKET,
+        region: process.env.AWS_S3_REGION,
     },
 };
 

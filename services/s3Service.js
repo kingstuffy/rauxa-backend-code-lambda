@@ -23,7 +23,7 @@ module.exports = {
                     return reject(err);
                 }
 
-                const url = `https://s3-us-west-2.amazonaws.com/${s3Config.bucket}/${key}`;
+                const url = `https://s3-${s3Config.region}.amazonaws.com/${s3Config.bucket}/${key}`;
                 return resolve(url);
             });
         });

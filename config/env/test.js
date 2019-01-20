@@ -10,6 +10,7 @@ const production = {
         key: '',
         secret: '',
         bucket: '',
+        region: '',
     },
 };
 
