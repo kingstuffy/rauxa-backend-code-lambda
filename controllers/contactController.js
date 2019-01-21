@@ -19,6 +19,10 @@ module.exports = {
             const contact = await contactService.save(payload);
             return {
                 statusCode: 201,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true,
+                },
                 body: JSON.stringify(contact),
             }
 
